@@ -1,0 +1,184 @@
+@import url('./fonts.css');
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #080b0c;
+  color: #f5f5f5;
+  overflow: hidden;
+}
+
+#root {
+  height: 100vh;
+  overflow: hidden;
+}
+
+nav {
+  background-color: #080b0c;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-left {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+  padding: 0 20px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+}
+
+.nav-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+
+.search-container {
+  position: relative;
+  width: 400px;
+  max-width: 100%;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 11px 20px;
+  padding-left: 45px;
+  padding-right: 45px;
+  background-color: rgba(23, 26, 28, 0.6);
+  box-shadow: 0 4px 6px rgba(17, 17, 17, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #f0f0f0;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.search-bar:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.02);
+  border-color: transparent;
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #5C6068;
+  pointer-events: none;
+}
+
+.search-bar::placeholder {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: -0.01em;
+  color: #9AA0AA;
+}
+
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #f0f0f0;
+}
+
+nav a:hover {
+  text-decoration: underline;
+  color: #ffffff;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo {
+  height: 40px;  /* Regola questa dimensione in base alle tue esigenze */
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+  transform: scale(1.05);
+}
+
+/* Aggiunto nuovo stile per l'effetto focus */
+.search-container:focus-within::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    137deg,
+    #FFF6FB 0%,
+    #EEA7ED 15%,
+    #CA93F0 30%,
+    #A190F2 45%,
+    #6FC3F1 60%,
+    #479CEE 75%,
+    #B1D2F1 90%,
+    #B1D2F1 100%
+  );
+  opacity: 0.3;
+  border-radius: 6px;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  padding: 1px;
+  pointer-events: none;
+}
+
+.clear-icon {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.connect-button {
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-family: 'Suisse_9', sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.connect-button:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.connect-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
