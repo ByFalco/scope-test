@@ -23,6 +23,8 @@ function FilterMenu({ onClose }) {
   });
 
   const [closing, setClosing] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isErrorFading, setIsErrorFading] = useState(false);
 
   const handleClose = () => {
     setClosing(true);
@@ -61,12 +63,53 @@ function FilterMenu({ onClose }) {
     handleClose();
   };
 
+  const handleTokenFilterChange = (key, checked) => {
+    const otherTokenKey = key === 'pumpTokens' ? 'moonshotTokens' : 'pumpTokens';
+    
+    if (!checked && !filters[otherTokenKey]) {
+      if (!errorMessage && !isErrorFading) {
+        setErrorMessage('At least one of the Moonshot Tokens and Pump.fun Tokens should be enabled');
+        
+        // Effetto shake sullo switch
+        const switchElement = document.querySelector(`[data-switch="${key}"]`);
+        if (switchElement && !switchElement.classList.contains('error-state')) {
+          switchElement.classList.add('error-state');
+          
+          setTimeout(() => {
+            switchElement.classList.remove('error-state');
+          }, 500);
+        }
+        
+        // Gestione fadeOut del messaggio
+        setTimeout(() => {
+          setIsErrorFading(true);
+          setTimeout(() => {
+            setErrorMessage('');
+            setIsErrorFading(false);
+          }, 300);
+        }, 3000);
+      }
+      return;
+    }
+
+    setErrorMessage('');
+    setFilters({...filters, [key]: checked});
+  };
+
   return (
     <>
       <div
         className={`filter-overlay ${closing ? 'fade-out' : ''}`}
         onClick={handleClose}
       ></div>
+      
+      {errorMessage && (
+        <div className={`global-error-message ${isErrorFading ? 'fade-out' : ''}`}>
+          <div className="error-icon">!</div>
+          {errorMessage}
+        </div>
+      )}
+
       <div className={`filter-wrapper ${closing ? 'slide-out' : ''}`}>
         <div className="filter-menu">
           <div className="filter-header">
@@ -75,12 +118,11 @@ function FilterMenu({ onClose }) {
           </div>
 
           <div className="filter-content">
-            {/* Sezione Checkbox */}
             <div className="filter-section">
               {[
-                { label: 'Pump.fun Tokens', key: 'pumpTokens', icon: pumpGreenIcon, glowColor: '#459c6e' },
-                { label: 'Moonshot Tokens', key: 'moonshotTokens', icon: moonYellowIcon, glowColor: '#DFFF16' },
-              ].map(({ label, key, icon, glowColor }) => (
+                { label: 'Pump.fun Tokens', key: 'pumpTokens', icon: pumpGreenIcon },
+                { label: 'Moonshot Tokens', key: 'moonshotTokens', icon: moonYellowIcon },
+              ].map(({ label, key, icon }) => (
                 <div className="toggle-item" key={key}>
                   <div className="toggle-label-with-icon">
                     <div className={`icon-wrapper ${key}`}>
@@ -88,11 +130,11 @@ function FilterMenu({ onClose }) {
                     </div>
                     <span className="toggle-label">{label}</span>
                   </div>
-                  <label className="toggle-switch">
+                  <label className="toggle-switch" data-switch={key}>
                     <input
                       type="checkbox"
                       checked={filters[key]}
-                      onChange={e => setFilters({...filters, [key]: e.target.checked})}
+                      onChange={e => handleTokenFilterChange(key, e.target.checked)}
                     />
                     <span className="toggle-slider"></span>
                   </label>

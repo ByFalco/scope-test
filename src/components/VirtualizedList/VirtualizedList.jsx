@@ -13,17 +13,42 @@ const CoinRow = memo(({ data, index, style }) => {
     copyIcon,
     copySuccessIcon,
     pumpIcon,
+    pumpGreenIcon,
     twitIcon,
     siteIcon,
     tgIcon,
   } = props;
 
   const isCopied = copiedTokens[coin.token];
+  const radius = 34;
+  const circumference = 2 * Math.PI * radius;
+  const strokeDashoffset = circumference - (circumference * coin.status) / 100;
 
   return (
     <div style={style}>
       <div className="coin-card">
-        <img src={coin.image} alt={coin.name} className="coin-logo" />
+        <div className="coin-logo-wrapper">
+          <svg className="progress-circle" viewBox="0 0 80 80">
+            <circle
+              className="progress-circle-bg"
+              cx="40"
+              cy="40"
+              r={radius}
+            />
+            <circle
+              className="progress-circle-fg"
+              cx="40"
+              cy="40"
+              r={radius}
+              strokeDasharray={circumference}
+              strokeDashoffset={strokeDashoffset}
+            />
+          </svg>
+          <img src={coin.image} alt={coin.name} className="coin-logo" />
+          <div className="status-icon">
+            <img src={pumpGreenIcon} alt="Pump Status" />
+          </div>
+        </div>
         <div className="coin-info">
           <div className="name-container">
             <h3>{coin.name}</h3>

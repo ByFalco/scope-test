@@ -90,7 +90,6 @@ nav {
 .search-bar::placeholder {
   font-family: 'Inter', sans-serif;
   font-size: 12px;
-  letter-spacing: -0.01em;
   color: #9AA0AA;
 }
 

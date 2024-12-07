@@ -13,7 +13,6 @@
   
   .list h2 {
     font-family: 'Suisse_2', sans-serif;
-    letter-spacing: -0.03em;
     font-size: 16px;
     margin: 0;
     padding: 4px 8px;
@@ -80,7 +79,7 @@
     border-bottom: 1px solid #26282c;
     position: relative;
     font-family: 'Inter', sans-serif;
-    letter-spacing: -0.01em;
+    gap: 16px;
   }
 
   
@@ -113,13 +112,75 @@
     pointer-events: none;
   }
   
+  .coin-logo-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    margin: 0;
+    padding: 0;
+  }
+
   .coin-logo {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    margin-right: 15px;
   }
   
+  .progress-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    transform: rotate(-90deg);
+  }
+  
+  .progress-circle-bg {
+    fill: none;
+    stroke: rgba(136, 136, 136, 0.3);
+    stroke-width: 3;
+  }
+  
+  .progress-circle-fg {
+    fill: none;
+    stroke: #AFDFB6; /* Colore verde chiaro */
+    stroke-width: 3;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s ease;
+  }
+  
+  .status-icon {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    bottom: 8px;
+    right: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .status-icon::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    background-color: #1e1e1e;
+    box-shadow: 0 0 8px #459c6e;
+    border: 2px solid rgba(69, 156, 110, 0.7);
+    border-radius: 50%;
+  }
+  
+  .status-icon img {
+    width: 14px;
+    height: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
   .coin-info {
     flex-grow: 1;
     text-align: left;
@@ -182,7 +243,7 @@
   }
   
   .time {
-    color: #AFDFB6;;
+    color: #9AA0AA;;
     font-size: 14px;
     margin-right: 8px;
   }
