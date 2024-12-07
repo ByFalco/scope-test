@@ -18,7 +18,7 @@ function App() {
       <div className="app">
         <nav>
           <div className="nav-left">
-            <a href="/memescope" className="logo-link">
+            <a href="#" className="logo-link">
               <img src={logo} alt="Memescope" className="nav-logo" />
             </a>
           </div>

@@ -52,6 +52,10 @@
     0 0 35px rgba(202, 147, 240, 0.008),
     0 0 45px rgba(161, 144, 242, 0.005);
   filter: drop-shadow(0 0 8px rgba(238, 167, 237, 0.18));
+  display: inline-block;
+  background-size: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .memescope p {
