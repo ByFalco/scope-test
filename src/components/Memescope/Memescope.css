@@ -80,6 +80,7 @@
   .memescope p {
     font-size: 14px;
     max-width: 90%;
+    padding-bottom: 10px;
   }
 }
 
@@ -91,6 +92,7 @@
 
   .memescope p {
     font-size: 12px;
+    padding-bottom: 10px;
   }
 }
 
