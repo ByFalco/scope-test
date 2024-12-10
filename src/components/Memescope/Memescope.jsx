@@ -21,6 +21,7 @@ function Memescope() {
   const [copiedTokens, setCopiedTokens] = useState({});
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isFilterClosing, setIsFilterClosing] = useState(false);
+  const [activeListMobile, setActiveListMobile] = useState('newly');
 
   const abbreviateToken = (token) => {
     return `${token.slice(0, 3)}...${token.slice(-3)}`;
@@ -564,37 +565,104 @@ function Memescope() {
     filterIcon,
   };
 
+  const renderMobileSwitch = () => {
+    return (
+      <div className="mobile-list-switch">
+        <div className="switch-buttons" data-active={activeListMobile}>
+          <button 
+            className={`switch-button ${activeListMobile === 'newly' ? 'active' : ''}`}
+            onClick={() => setActiveListMobile('newly')}
+          >
+            Newly Created
+          </button>
+          <button 
+            className={`switch-button ${activeListMobile === 'completing' ? 'active' : ''}`}
+            onClick={() => setActiveListMobile('completing')}
+          >
+            Completing
+          </button>
+          <button 
+            className={`switch-button ${activeListMobile === 'graduated' ? 'active' : ''}`}
+            onClick={() => setActiveListMobile('graduated')}
+          >
+            Completed
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  const renderLists = () => {
+    // Versione desktop
+    if (window.innerWidth > 768) {
+      return (
+        <>
+          <VirtualizedList
+            items={newlyCreated}
+            title="Newly Created"
+            onFilterClick={openFilter}
+            listProps={listProps}
+          />
+          <VirtualizedList
+            items={aboutToGraduate}
+            title="Completing"
+            onFilterClick={openFilter}
+            listProps={listProps}
+          />
+          <VirtualizedList
+            items={graduated}
+            title="Completed"
+            onFilterClick={openFilter}
+            listProps={listProps}
+          />
+        </>
+      );
+    }
+
+    // Versione mobile
+    let activeItems, activeTitle;
+    switch (activeListMobile) {
+      case 'newly':
+        activeItems = newlyCreated;
+        activeTitle = "Newly Created";
+        break;
+      case 'completing':
+        activeItems = aboutToGraduate;
+        activeTitle = "Completing";
+        break;
+      case 'graduated':
+        activeItems = graduated;
+        activeTitle = "Completed";
+        break;
+      default:
+        activeItems = newlyCreated;
+        activeTitle = "Newly Created";
+    }
+
+    return (
+      <VirtualizedList
+        items={activeItems}
+        title={activeTitle}
+        onFilterClick={openFilter}
+        listProps={listProps}
+      />
+    );
+  };
+
   return (
     <div className="memescope">
       <h1>Memescope</h1>
       <p>Discover top pump.fun and Moonshot tokens and track the latest migrations with real-time customized feeds.</p>
       <div className="divider"></div>
       <div className="lists-container">
-        <VirtualizedList
-          items={newlyCreated}
-          title="Newly Created"
-          onFilterClick={openFilter}
-          listProps={listProps}
-        />
-        <VirtualizedList
-          items={aboutToGraduate}
-          title="Completing"
-          onFilterClick={openFilter}
-          listProps={listProps}
-        />
-        <VirtualizedList
-          items={graduated}
-          title="Completed"
-          onFilterClick={openFilter}
-          listProps={listProps}
-        />
+        {renderLists()}
       </div>
-
-      <button onClick={openFilter}>Open Filter</button>
 
       {(isFilterOpen || isFilterClosing) && (
         <FilterMenu onClose={handleFilterClose} />
       )}
+      
+      {renderMobileSwitch()}
     </div>
   );
 }

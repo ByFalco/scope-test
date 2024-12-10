@@ -29,6 +29,18 @@ const CoinRow = memo(({ data, index, style }) => {
       <div className="coin-card">
         <div className="coin-logo-wrapper">
           <svg className="progress-circle" viewBox="0 0 80 80">
+            <defs>
+              <linearGradient id="gradient" gradientTransform="rotate(90)">
+                <stop offset="0%" stopColor="#FFF6FB" />
+                <stop offset="15%" stopColor="#EEA7ED" />
+                <stop offset="30%" stopColor="#CA93F0" />
+                <stop offset="45%" stopColor="#A190F2" />
+                <stop offset="60%" stopColor="#6FC3F1" />
+                <stop offset="75%" stopColor="#479CEE" />
+                <stop offset="90%" stopColor="#B1D2F1" />
+                <stop offset="100%" stopColor="#B1D2F1" />
+              </linearGradient>
+            </defs>
             <circle
               className="progress-circle-bg"
               cx="40"
@@ -60,7 +72,7 @@ const CoinRow = memo(({ data, index, style }) => {
             <button 
               className="copy-button"
               onClick={() => handleCopyToken(coin.token)}
-              title="Copy Token"
+              data-tooltip="Copy Token"
             >
               <img 
                 src={isCopied ? copySuccessIcon : copyIcon} 
@@ -87,7 +99,7 @@ const CoinRow = memo(({ data, index, style }) => {
                 </a>
               </div>
             </div>
-            <div className="market-cap">
+            <div className="market-cap" data-tooltip="Market Cap">
               <span className="mc-label">MC:</span>
               <span className="mc-value">{coin.marketCap}</span>
             </div>

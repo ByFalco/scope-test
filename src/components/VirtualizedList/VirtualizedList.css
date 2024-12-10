@@ -27,18 +27,12 @@
     align-items: center;
   }
   
-  .coins-container {
-    flex: 1;
-    min-height: 0;
-    position: relative;
-    overflow: hidden;
-  }
     
   /* Custom Scrollbar */
   .virtual-scroll {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(136, 136, 136, 0.3) transparent;
+    scrollbar-width: auto;
     overflow-x: hidden !important;
+    padding-right: 8px;
   }
   
   .virtual-scroll::-webkit-scrollbar {
@@ -58,15 +52,16 @@
   .virtual-scroll:hover::-webkit-scrollbar-thumb {
     background: rgba(136, 136, 136, 0.5);
   }
-  
 
   .coins-container {
     flex: 1;
     overflow-y: auto;
     min-height: 0;
     margin: 0 -16px;
-    padding: 0 16px;
+    padding: 0 20px 0 16px;
     padding-bottom: 10px;
+    position: relative;
+    overflow: visible;
   }
   
   .coin-card {
@@ -78,19 +73,22 @@
     border: 1px solid transparent;
     border-bottom: 1px solid #26282c;
     position: relative;
+    z-index: 0;
     font-family: 'Inter', sans-serif;
-    gap: 16px;
+    gap: 14px;
   }
 
   
   .coin-card:hover {
     background-color: rgba(255, 255, 255, 0.02);
+    border-bottom-color: transparent;
+    z-index: 1;
   }
   
   .coin-card:hover::before {
     content: '';
     position: absolute;
-    inset: -1px;
+    inset: 2px;
     background: linear-gradient(
       137deg,
       #FFF6FB 0%,
@@ -102,7 +100,7 @@
       #B1D2F1 90%,
       #B1D2F1 100%
     );
-    opacity: 0.3;
+    opacity: 0.5;
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
@@ -110,6 +108,7 @@
     padding: 1px;
     border-radius: 2px;
     pointer-events: none;
+    z-index: -1;
   }
   
   .coin-logo-wrapper {
@@ -119,7 +118,7 @@
     justify-content: center;
     width: 80px;
     height: 80px;
-    margin: 0;
+    margin-left: -12px;
     padding: 0;
   }
 
@@ -146,7 +145,7 @@
   
   .progress-circle-fg {
     fill: none;
-    stroke: #AFDFB6; /* Colore verde chiaro */
+    stroke: url(#gradient);
     stroke-width: 3;
     stroke-linecap: round;
     transition: stroke-dashoffset 0.5s ease;
@@ -249,10 +248,25 @@
   }
   
   .status {
-    color: #AFDFB6;
     font-size: 14px;
+    font-weight: bold;
     display: flex;
     align-items: center;
+    background: linear-gradient(
+      137deg,
+      #FFF6FB 0%,
+      #EEA7ED 15%,
+      #CA93F0 30%,
+      #A190F2 45%,
+      #6FC3F1 60%,
+      #479CEE 75%,
+      #B1D2F1 90%,
+      #B1D2F1 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
   }
   
   .status-container {
@@ -298,4 +312,214 @@
     height: 16px;
     display: flex;
     align-items: center;
+  }
+
+  /* Stili per il tooltip */
+  [data-tooltip] {
+    position: relative;
+  }
+
+  [data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 50%;
+    bottom: -8px; /* Posiziona il tooltip sotto l'elemento */
+    transform: translateX(-50%) translateY(100%);
+    background-color: rgba(17, 17, 17, 0.9);
+    color: #f5f5f5;
+    padding: 6px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 10;
+  }
+
+  [data-tooltip]:hover::after {
+    opacity: 1;
+  }
+
+  /* Mobile Responsive Styles */
+  @media screen and (max-width: 768px) {
+    .list {
+      width: 100%;
+      height: calc(100vh - 180px);
+      margin-bottom: 0;
+      padding: 16px 8px;
+    }
+
+    .lists-container {
+      padding: 0 16px;
+    }
+
+    .coin-card {
+      padding: 16px 12px;
+      gap: 12px;
+    }
+
+    .coin-logo-wrapper {
+      width: 70px;
+      height: 70px;
+      margin-left: -8px;
+    }
+
+    .coin-logo {
+      width: 50px;
+      height: 50px;
+    }
+
+    .progress-circle {
+      width: 70px;
+      height: 70px;
+    }
+
+    .coins-container {
+      margin: 0 -8px;
+      padding: 0 12px 0 8px;
+    }
+
+    .coin-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .name-container {
+      gap: 6px;
+    }
+
+    .coin-info h3 {
+      font-size: 15px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .second-name {
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .token-container {
+      margin: 4px 0;
+    }
+
+    .token {
+      font-size: 13px;
+    }
+
+    .status-container {
+      margin-top: 4px;
+      gap: 8px;
+    }
+
+    .market-cap {
+      gap: 3px;
+    }
+
+    .mc-label, .mc-value {
+      font-size: 12px;
+    }
+
+    .social-links {
+      gap: 4px;
+    }
+
+    .social-icon {
+      width: 14px;
+      height: 14px;
+    }
+
+    .status {
+      font-size: 13px;
+    }
+  }
+
+  /* Footer Switch Styles */
+  .mobile-list-switch {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(23, 26, 28, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 16px;
+    display: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 98;
+  }
+
+  .switch-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* Linea indicatore animata migliorata */
+  .switch-buttons::before {
+    content: '';
+    position: absolute;
+    top: -16px; /* Allinea con il bordo superiore del container */
+    height: 2px;
+    width: 33.333%;
+    background: linear-gradient(
+      137deg,
+      #FFF6FB 0%,
+      #EEA7ED 15%,
+      #CA93F0 30%,
+      #A190F2 45%,
+      #6FC3F1 60%,
+      #479CEE 75%,
+      #B1D2F1 90%,
+      #B1D2F1 100%
+    );
+    border-radius: 2px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 8px rgba(69, 156, 110, 0.3);
+  }
+
+  /* Posizioni della linea corrette per ogni stato */
+  .switch-buttons[data-active="newly"]::before {
+    transform: translateX(0);
+  }
+
+  .switch-buttons[data-active="completing"]::before {
+    transform: translateX(100%);
+  }
+
+  .switch-buttons[data-active="graduated"]::before {
+    transform: translateX(200%);
+  }
+
+  .switch-button {
+    flex: 1;
+    padding: 12px 4px;
+    background: transparent;
+    border: none;
+    color: #9AA0AA;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    text-align: center;
+    width: 33.333%; /* Assicura che ogni pulsante abbia la stessa larghezza */
+  }
+
+  .switch-button.active {
+    color: #f5f5f5;
+  }
+
+  @media screen and (max-width: 768px) {
+    .mobile-list-switch {
+      display: block;
+    }
   }

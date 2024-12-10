@@ -26,6 +26,30 @@ function FilterMenu({ onClose }) {
   const [errorMessage, setErrorMessage] = useState('');
   const [isErrorFading, setIsErrorFading] = useState(false);
 
+  useEffect(() => {
+    const inputs = document.querySelectorAll('.range-inputs input');
+    inputs.forEach(input => {
+      input.addEventListener('wheel', handleWheel, { passive: false });
+      return () => input.removeEventListener('wheel', handleWheel, { passive: false });
+    });
+
+    function handleWheel(e) {
+      e.preventDefault();
+      const delta = e.deltaY > 0 ? -1 : 1;
+      const key = e.target.getAttribute('data-key');
+      const type = e.target.getAttribute('data-type');
+      
+      if (key && type) {
+        const currentValue = Number(filters[key][type]) || 0;
+        const newValue = Math.max(0, currentValue + delta);
+        setFilters(prev => ({
+          ...prev,
+          [key]: { ...prev[key], [type]: newValue }
+        }));
+      }
+    }
+  }, [filters]);
+
   const handleClose = () => {
     setClosing(true);
   };
@@ -187,6 +211,8 @@ function FilterMenu({ onClose }) {
                         min="0"
                         step="any"
                         placeholder="Min"
+                        data-key={key}
+                        data-type="min"
                         value={filters[key].min}
                         onChange={e => {
                           const value = Math.max(0, Number(e.target.value));
@@ -194,37 +220,6 @@ function FilterMenu({ onClose }) {
                             ...filters,
                             [key]: { ...filters[key], min: value || '' }
                           });
-                        }}
-                        onWheel={e => {
-                          e.preventDefault();
-                          const delta = e.deltaY > 0 ? -1 : 1;
-                          const currentValue = Number(filters[key].min) || 0;
-                          const newValue = Math.max(0, currentValue + delta);
-                          setFilters({
-                            ...filters,
-                            [key]: { ...filters[key], min: newValue }
-                          });
-                        }}
-                        onMouseDown={e => {
-                          const startY = e.clientY;
-                          const startValue = Number(filters[key].min) || 0;
-                          
-                          const handleMouseMove = moveEvent => {
-                            const deltaY = startY - moveEvent.clientY;
-                            const newValue = Math.max(0, startValue + Math.floor(deltaY / 2));
-                            setFilters({
-                              ...filters,
-                              [key]: { ...filters[key], min: newValue }
-                            });
-                          };
-                          
-                          const handleMouseUp = () => {
-                            document.removeEventListener('mousemove', handleMouseMove);
-                            document.removeEventListener('mouseup', handleMouseUp);
-                          };
-                          
-                          document.addEventListener('mousemove', handleMouseMove);
-                          document.addEventListener('mouseup', handleMouseUp);
                         }}
                       />
                     </div>
@@ -235,6 +230,8 @@ function FilterMenu({ onClose }) {
                         min="0"
                         step="any"
                         placeholder="Max"
+                        data-key={key}
+                        data-type="max"
                         value={filters[key].max}
                         onChange={e => {
                           const value = Math.max(0, Number(e.target.value));
@@ -242,37 +239,6 @@ function FilterMenu({ onClose }) {
                             ...filters,
                             [key]: { ...filters[key], max: value || '' }
                           });
-                        }}
-                        onWheel={e => {
-                          e.preventDefault();
-                          const delta = e.deltaY > 0 ? -1 : 1;
-                          const currentValue = Number(filters[key].max) || 0;
-                          const newValue = Math.max(0, currentValue + delta);
-                          setFilters({
-                            ...filters,
-                            [key]: { ...filters[key], max: newValue }
-                          });
-                        }}
-                        onMouseDown={e => {
-                          const startY = e.clientY;
-                          const startValue = Number(filters[key].max) || 0;
-                          
-                          const handleMouseMove = moveEvent => {
-                            const deltaY = startY - moveEvent.clientY;
-                            const newValue = Math.max(0, startValue + Math.floor(deltaY / 2));
-                            setFilters({
-                              ...filters,
-                              [key]: { ...filters[key], max: newValue }
-                            });
-                          };
-                          
-                          const handleMouseUp = () => {
-                            document.removeEventListener('mousemove', handleMouseMove);
-                            document.removeEventListener('mouseup', handleMouseUp);
-                          };
-                          
-                          document.addEventListener('mousemove', handleMouseMove);
-                          document.addEventListener('mouseup', handleMouseUp);
                         }}
                       />
                     </div>
