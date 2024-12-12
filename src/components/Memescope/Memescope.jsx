@@ -59,7 +59,7 @@ function Memescope() {
         token: '4qrxPryDbGa2RNrRi5mZncMg7ir6rbyXGSV75VqKmoon',
         image: 'https://pbs.twimg.com/profile_images/1865213407428780032/JWwNUOwk_400x400.jpg',
         time: '45s',
-        status: 20,
+        status: 28,
         marketCap: '$25k',
         links: {
           pump: "https://pump.fun/token/xyz",
@@ -74,7 +74,7 @@ function Memescope() {
         token: 'DHcqzaHrzdV63jzjdrq6a6G2cEwfAzhgGZHp1zyaDKNc',
         image: 'https://pbs.twimg.com/profile_images/1799788556015022080/lgDon_jn_400x400.jpg',
         time: '2m',
-        status: 15,
+        status: 20,
         marketCap: '$8.6k',
         links: {
           pump: "https://pump.fun/token/xyz",
@@ -89,7 +89,7 @@ function Memescope() {
         token: 'DdyoGjgQVT8UV8o7DoyVrBt5AfjrdZr32cfBMvbbPNHM',
         image: 'https://pbs.twimg.com/profile_images/1860346179826987008/lbdeZhL6_400x400.jpg',
         time: '15s',
-        status: 10,
+        status: 31,
         marketCap: '$48k',
         links: {
           pump: "https://pump.fun/token/xyz",
@@ -213,7 +213,7 @@ function Memescope() {
         token: 'CPguJCEWtdY3Dz6WzjfhcAbHHbKwruTTD4hy4XwY1fZM',
         image: 'https://pbs.twimg.com/profile_images/1864725934818910208/f1M3zA7r_400x400.jpg',
         time: '45m',
-        status: 85,
+        status: 78,
         marketCap: '$85k',
         links: {
           pump: "https://pump.fun/token/xyz",
@@ -228,7 +228,7 @@ function Memescope() {
         token: 'H3c9RZhvCzxQSmLULh4RsJC8GuK9rVNV2bcoLhMQmoon',
         image: 'https://pbs.twimg.com/profile_images/1861467863388737537/t8cO12f5_400x400.jpg',
         time: '2h',
-        status: 90,
+        status: 82,
         marketCap: '$14k',
         links: {
           pump: "https://pump.fun/token/xyz",
@@ -243,7 +243,7 @@ function Memescope() {
         token: 'H3c9RZhvCzxQSmLULh4RsJC8GuK9rVNV2bcoLhMQpepe',
         image: 'https://pbs.twimg.com/profile_images/1821584417673846790/sQERWwsB_400x400.jpg',
         time: '15m',
-        status: 95,
+        status: 56,
         marketCap: '$32k',
         links: {
           pump: "https://pump.fun/token/xyz",
@@ -273,7 +273,7 @@ function Memescope() {
         token: 'MSOLxT8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263',
         image: 'https://pbs.twimg.com/profile_images/1860376335383760896/WA0kQJLe_400x400.jpg',
         time: '30m',
-        status: 92,
+        status: 48,
         marketCap: '$125k',
         links: {
           pump: "https://pump.fun/token/xyz",
@@ -288,7 +288,7 @@ function Memescope() {
         token: 'BTCGxT8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263',
         image: 'https://pbs.twimg.com/profile_images/1864988594366222337/NKF-o4oY_400x400.jpg',
         time: '3h',
-        status: 87,
+        status: 36,
         marketCap: '$78k',
         links: {
           pump: "https://pump.fun/token/xyz",

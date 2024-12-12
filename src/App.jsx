@@ -10,6 +10,7 @@ function App() {
   const [searchText, setSearchText] = useState('');
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const handleClearSearch = () => {
     setSearchText('');
@@ -26,10 +27,16 @@ function App() {
     }
   };
 
+  const navClassName = `${isMenuOpen || isFilterOpen ? 'menu-open' : ''}`;
+
+  const handleFilterClick = () => {
+    setIsFilterOpen(true);
+  };
+
   return (
     <BrowserRouter>
       <div className="app">
-        <nav>
+        <nav className={navClassName}>
           <div className="nav-left">
             <a href="#" className="logo-link">
               <img src={logo} alt="Memescope" className="nav-logo" />

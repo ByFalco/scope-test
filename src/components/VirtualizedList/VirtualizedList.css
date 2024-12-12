@@ -3,7 +3,7 @@
     text-align: left;
     display: flex;
     flex-direction: column;
-    background-color: rgba(23, 26, 28, 0.6);
+    background-color: rgba(23, 26, 28, 1);
     border-radius: 8px;
     padding: 16px;
     box-shadow: 0 4px 6px rgba(17, 17, 17, 0.2);
@@ -145,10 +145,26 @@
   
   .progress-circle-fg {
     fill: none;
-    stroke: url(#gradient);
     stroke-width: 3;
     stroke-linecap: round;
-    transition: stroke-dashoffset 0.5s ease;
+    transition: stroke-dashoffset 0.5s ease, stroke 0.5s ease;
+  }
+  
+  /* Progress circle gradients */
+  .progress-circle-fg[data-value="low"] {
+    stroke: url(#gradientWhite);
+  }
+
+  .progress-circle-fg[data-value="medium"] {
+    stroke: url(#gradientWhite);
+  }
+
+  .progress-circle-fg[data-value="high"] {
+    stroke: url(#gradientWhite);
+  }
+
+  .progress-circle-fg[data-value="excellent"] {
+    stroke: url(#gradientExcellent);
   }
   
   .status-icon {
@@ -252,6 +268,21 @@
     font-weight: bold;
     display: flex;
     align-items: center;
+  }
+
+  /* Status sotto 80% - Bianco */
+  .status[data-value="low"],
+  .status[data-value="medium"],
+  .status[data-value="high"] {
+    background: linear-gradient(137deg, #FFFFFF, #F5F5F5);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Status sopra 80% - Gradiente originale */
+  .status[data-value="excellent"] {
     background: linear-gradient(
       137deg,
       #FFF6FB 0%,
@@ -305,6 +336,7 @@
     gap: 6px;
     align-items: center;
     line-height: 1;
+    contain: layout style;
   }
   
   .social-icon {
@@ -510,7 +542,6 @@
     color: #9AA0AA;
     font-family: 'Inter', sans-serif;
     font-size: 14px;
-    letter-spacing: -0.02em;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -527,4 +558,46 @@
     .mobile-list-switch {
       display: block;
     }
+  }
+
+  /* Modifica gli stili dei tooltip per i social link */
+  .social-links a[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
+    font-size: 11px;
+    padding: 4px 6px;
+    white-space: nowrap;
+    background-color: rgba(17, 17, 17, 0.95);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1000;
+    transition: opacity 0.2s ease;
+  }
+
+  .social-links a[data-tooltip]:hover::after {
+    opacity: 1;
+  }
+
+  /* Rimuovi le trasformazioni di scala che potrebbero causare flickering */
+  .social-links a[data-tooltip]::after {
+    transform: translateX(-50%);
+    transition: opacity 0.2s ease;
+  }
+
+  /* Assicurati che i link social non cambino dimensione durante l'hover */
+  .social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    will-change: transform;
+    transform: translateZ(0);
   }
