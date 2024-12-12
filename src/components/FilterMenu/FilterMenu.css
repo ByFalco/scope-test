@@ -255,7 +255,8 @@ input:checked + .toggle-slider:before {
     border: none;
     cursor: pointer;
     font-size: 16px;
-    font-family: 'Suisse_9', sans-serif;
+    font-family: 'Suisse_6', sans-serif;
+    line-height: 0;
     transition: all 0.2s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -275,6 +276,8 @@ input:checked + .toggle-slider:before {
     height: 19px;
     opacity: 0.7;
     transition: opacity 0.2s;
+    line-height: 0;
+    translate: 0 -1.2px;
 }
 
 .reset-button:hover img {
@@ -287,22 +290,67 @@ input:checked + .toggle-slider:before {
 }
 
 .apply-button {
+    background: rgba(255, 255, 255, 0.95);
+    color: #000000;
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0);
+    will-change: transform, box-shadow;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 2px 6px rgba(0, 0, 0, 0.06),
+        0 1px 3px rgba(0, 0, 0, 0.1),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.apply-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: linear-gradient(
-        137deg,
-        #EEA7ED 0%,
-        #CA93F0 50%,
-        #6FC3F1 100%
+        135deg,
+        rgba(255, 255, 255, 0.8) 0%,
+        rgba(238, 167, 237, 0.9) 20%,
+        rgba(202, 147, 240, 0.95) 40%,
+        rgba(161, 144, 242, 0.9) 60%,
+        rgba(111, 195, 241, 0.95) 80%,
+        rgba(177, 210, 241, 0.8) 100%
     );
-    color: #080b0c;
+    opacity: 0;
+    will-change: opacity;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.apply-button span {
+    position: relative;
+    z-index: 2;
 }
 
 .apply-button:hover {
-    opacity: 0.9;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    color: #ffffff;
+    box-shadow: 
+        0 8px 20px rgba(202, 147, 240, 0.25),
+        0 4px 10px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.apply-button:hover::before {
+    opacity: 1;
 }
 
 .apply-button:active {
     transform: translateY(0);
+    box-shadow: 
+        0 4px 12px rgba(202, 147, 240, 0.2),
+        0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .filter-content::-webkit-scrollbar {

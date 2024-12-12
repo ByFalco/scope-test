@@ -253,7 +253,9 @@ function FilterMenu({ onClose }) {
               <img src={resetIcon} alt="" />
               Reset
             </button>
-            <button className="apply-button" onClick={handleApply}>Apply</button>
+            <button className="apply-button" onClick={handleApply}>
+              <span>Apply</span>
+            </button>
           </div>
         </div>
       </div>
