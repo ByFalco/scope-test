@@ -43,11 +43,13 @@ function Memescope() {
 
   const openFilter = () => {
     setIsFilterOpen(true);
+    document.dispatchEvent(new CustomEvent('filterStateChange', { detail: true }));
   };
 
   const handleFilterClose = () => {
     setIsFilterClosing(false);
     setIsFilterOpen(false);
+    document.dispatchEvent(new CustomEvent('filterStateChange', { detail: false }));
   };
 
   useEffect(() => {

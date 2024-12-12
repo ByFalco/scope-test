@@ -49,11 +49,10 @@ nav {
   position: sticky;
   top: 0;
   z-index: 100;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-nav.menu-open,
-nav.filter-open {
+nav.menu-open {
   background-color: #080b0c;
 }
 
@@ -318,10 +317,10 @@ nav a:hover {
 /* --- Stili per il menu laterale --- */
 .hamburger-menu {
   position: absolute;
-  top: 60px;
+  top: 58px;
   right: -100%;
   width: 100%;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 58px);
   background-color: #080b0c;
   z-index: 9999;
   transition: right 0.6s cubic-bezier(0.4, 0, 0.2, 1);

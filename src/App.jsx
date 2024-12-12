@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './styles/index.css';
 import Memescope from './components/Memescope/Memescope.jsx';
@@ -11,6 +11,17 @@ function App() {
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  useEffect(() => {
+    const handleFilterStateChange = (event) => {
+      setIsFilterOpen(event.detail);
+    };
+
+    document.addEventListener('filterStateChange', handleFilterStateChange);
+    return () => {
+      document.removeEventListener('filterStateChange', handleFilterStateChange);
+    };
+  }, []);
 
   const handleClearSearch = () => {
     setSearchText('');
