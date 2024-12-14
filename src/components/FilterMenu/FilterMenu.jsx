@@ -25,6 +25,7 @@ function FilterMenu({ onClose }) {
   const [closing, setClosing] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [isErrorFading, setIsErrorFading] = useState(false);
+  const [isResetting, setIsResetting] = useState(false);
 
   useEffect(() => {
     const inputs = document.querySelectorAll('.range-inputs input');
@@ -64,6 +65,9 @@ function FilterMenu({ onClose }) {
   }, [closing, onClose]);
 
   const handleReset = () => {
+    setIsResetting(true);
+    
+    // Reset dei filtri
     setFilters({
       pumpTokens: true,
       moonshotTokens: true,
@@ -80,6 +84,11 @@ function FilterMenu({ onClose }) {
       sells: { min: '', max: '' },
       tokenAge: { min: '', max: '' }
     });
+
+    // Rimuovi la classe dopo che l'animazione è completata
+    setTimeout(() => {
+      setIsResetting(false);
+    }, 600); // Durata dell'animazione
   };
 
   const handleApply = () => {
@@ -249,7 +258,7 @@ function FilterMenu({ onClose }) {
           </div>
 
           <div className="filter-footer">
-            <button className="reset-button" onClick={handleReset}>
+            <button className={`reset-button ${isResetting ? 'resetting' : ''}`} onClick={handleReset}>
               <img src={resetIcon} alt="" />
               Reset
             </button>

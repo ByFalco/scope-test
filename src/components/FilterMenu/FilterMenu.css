@@ -1,6 +1,6 @@
 .filter-wrapper {
     position: fixed;
-    top: 58px;
+    top: 63px;
     right: 0;
     bottom: 0;
     width: 360px;
@@ -271,6 +271,19 @@ input:checked + .toggle-slider:before {
     gap: 4px;
 }
 
+@keyframes resetRotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+
+.reset-button.resetting img {
+    animation: resetRotate 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .reset-button img {
     width: 19px;
     height: 19px;
@@ -278,7 +291,7 @@ input:checked + .toggle-slider:before {
     transition: opacity 0.2s;
     line-height: 0;
     translate: 0 -1.2px;
-}
+  }
 
 .reset-button:hover img {
     opacity: 1;
@@ -290,7 +303,15 @@ input:checked + .toggle-slider:before {
 }
 
 .apply-button {
-    background: rgba(255, 255, 255, 0.95);
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.8) 0%,
+        rgba(238, 167, 237, 0.9) 20%,
+        rgba(202, 147, 240, 0.95) 40%,
+        rgba(161, 144, 242, 0.9) 60%,
+        rgba(111, 195, 241, 0.95) 80%,
+        rgba(177, 210, 241, 0.8) 100%
+    );
     color: #000000;
     position: relative;
     overflow: hidden;

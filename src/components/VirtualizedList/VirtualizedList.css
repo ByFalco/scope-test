@@ -70,21 +70,36 @@
     padding: 12px 16px;
     background-color: transparent;
     transition: all 0.2s ease-in-out;
-    border: 1px solid transparent;
-    border-bottom: 1px solid #26282c;
+    border: none;
     position: relative;
     z-index: 0;
     font-family: 'Inter', sans-serif;
     gap: 14px;
   }
 
-  
-  .coin-card:hover {
-    background-color: rgba(255, 255, 255, 0.02);
-    border-bottom-color: transparent;
+  .virtual-scroll > div > div:nth-child(odd) .coin-card {
+    background-color: rgba(28, 32, 35, 0.6);
+  }
+
+  .coin-card::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 1px;
+    height: 1px;
+    background-color: #26282c;
     z-index: 1;
   }
-  
+
+  .coin-card:hover::after {
+    opacity: 0;
+  }
+
+  .virtual-scroll > div > div:has(+ div .coin-card:hover) .coin-card::after {
+    opacity: 0;
+  }
+
   .coin-card:hover::before {
     content: '';
     position: absolute;
@@ -353,25 +368,40 @@
 
   [data-tooltip]::after {
     content: attr(data-tooltip);
-    position: absolute;
+    position: fixed;
     left: 50%;
-    bottom: -8px; /* Posiziona il tooltip sotto l'elemento */
-    transform: translateX(-50%) translateY(100%);
-    background-color: rgba(17, 17, 17, 0.9);
-    color: #f5f5f5;
-    padding: 6px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-family: 'Inter', sans-serif;
+    bottom: 20px;
+    transform: translateX(-50%);
+    font-size: 11px;
+    padding: 4px 6px;
     white-space: nowrap;
+    background-color: rgba(17, 17, 17, 0.95);
+    backdrop-filter: blur(4px);
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #f5f5f5;
+    font-family: 'Inter', sans-serif;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.2s ease-in-out;
-    z-index: 10;
+    z-index: 1000;
+    transition: opacity 0.2s ease;
   }
 
   [data-tooltip]:hover::after {
     opacity: 1;
+  }
+
+  /* Ottimizzazione per i container dei tooltip */
+  .social-links a,
+  .copy-button,
+  .market-cap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform;
+    transform: translateZ(0);
   }
 
   /* Mobile Responsive Styles */
@@ -558,46 +588,4 @@
     .mobile-list-switch {
       display: block;
     }
-  }
-
-  /* Modifica gli stili dei tooltip per i social link */
-  .social-links a[data-tooltip]::after {
-    content: attr(data-tooltip);
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 20px;
-    font-size: 11px;
-    padding: 4px 6px;
-    white-space: nowrap;
-    background-color: rgba(17, 17, 17, 0.95);
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    pointer-events: none;
-    z-index: 1000;
-    transition: opacity 0.2s ease;
-  }
-
-  .social-links a[data-tooltip]:hover::after {
-    opacity: 1;
-  }
-
-  /* Rimuovi le trasformazioni di scala che potrebbero causare flickering */
-  .social-links a[data-tooltip]::after {
-    transform: translateX(-50%);
-    transition: opacity 0.2s ease;
-  }
-
-  /* Assicurati che i link social non cambino dimensione durante l'hover */
-  .social-links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 16px;
-    height: 16px;
-    position: relative;
-    will-change: transform;
-    transform: translateZ(0);
   }

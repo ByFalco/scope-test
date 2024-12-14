@@ -115,7 +115,7 @@ const CoinRow = memo(({ data, index, style }) => {
                 {coin.status}%
               </span>
               <div className="social-links">
-                <a href={coin.links.pump} target="_blank" rel="noopener noreferrer" data-tooltip="View Pump Info">
+                <a href={coin.links.pump} target="_blank" rel="noopener noreferrer" data-tooltip="View pump.fun">
                   <img src={pumpIcon} alt="Pump" className="social-icon" />
                 </a>
                 <a href={coin.links.twitter} target="_blank" rel="noopener noreferrer" data-tooltip="Visit Twitter">
