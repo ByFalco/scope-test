@@ -215,7 +215,7 @@ function Memescope() {
         token: 'CPguJCEWtdY3Dz6WzjfhcAbHHbKwruTTD4hy4XwY1fZM',
         image: 'https://pbs.twimg.com/profile_images/1864725934818910208/f1M3zA7r_400x400.jpg',
         time: '45m',
-        status: 78,
+        status: 100,
         marketCap: '$85k',
         links: {
           pump: "https://pump.fun/token/xyz",
@@ -230,8 +230,8 @@ function Memescope() {
         token: 'H3c9RZhvCzxQSmLULh4RsJC8GuK9rVNV2bcoLhMQmoon',
         image: 'https://pbs.twimg.com/profile_images/1861467863388737537/t8cO12f5_400x400.jpg',
         time: '2h',
-        status: 82,
-        marketCap: '$14k',
+        status: 100,
+        marketCap: '$91k',
         links: {
           pump: "https://pump.fun/token/xyz",
           twitter: "https://twitter.com/xyz",
@@ -245,8 +245,8 @@ function Memescope() {
         token: 'H3c9RZhvCzxQSmLULh4RsJC8GuK9rVNV2bcoLhMQpepe',
         image: 'https://pbs.twimg.com/profile_images/1821584417673846790/sQERWwsB_400x400.jpg',
         time: '15m',
-        status: 56,
-        marketCap: '$32k',
+        status: 100,
+        marketCap: '$82k',
         links: {
           pump: "https://pump.fun/token/xyz",
           twitter: "https://twitter.com/xyz",
@@ -260,7 +260,7 @@ function Memescope() {
         token: 'MUNKxT8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263',
         image: 'https://pbs.twimg.com/profile_images/1865135117989015553/04UZbGAF_400x400.jpg',
         time: '1h',
-        status: 64,
+        status: 92,
         marketCap: '$95k',
         links: {
           pump: "https://pump.fun/token/xyz",
@@ -275,7 +275,7 @@ function Memescope() {
         token: 'MSOLxT8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263',
         image: 'https://pbs.twimg.com/profile_images/1860376335383760896/WA0kQJLe_400x400.jpg',
         time: '30m',
-        status: 48,
+        status: 88,
         marketCap: '$125k',
         links: {
           pump: "https://pump.fun/token/xyz",
@@ -290,7 +290,7 @@ function Memescope() {
         token: 'BTCGxT8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263',
         image: 'https://pbs.twimg.com/profile_images/1867700596414746624/HuCAJ6AN_400x400.jpg',
         time: '3h',
-        status: 36,
+        status: 83,
         marketCap: '$78k',
         links: {
           pump: "https://pump.fun/token/xyz",
@@ -305,7 +305,7 @@ function Memescope() {
         token: 'NOVAxT8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263',
         image: 'https://pbs.twimg.com/profile_images/1844053260250038272/mFWTkbge_400x400.jpg',
         time: '20m',
-        status: 93,
+        status: 78,
         marketCap: '$145k',
         links: {
           pump: "https://pump.fun/token/xyz",
@@ -320,7 +320,7 @@ function Memescope() {
         token: 'ANLOSxT8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263',
         image: 'https://pbs.twimg.com/profile_images/1834203161055170561/m2JGKHid_400x400.jpg',
         time: '4h',
-        status: 89,
+        status: 72,
         marketCap: '$112k',
         links: {
           pump: "https://pump.fun/token/xyz",
@@ -335,7 +335,7 @@ function Memescope() {
         token: 'GNPDxT8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263',
         image: 'https://pbs.twimg.com/profile_images/1819155612350976001/21hjsDF4_400x400.jpg',
         time: '55m',
-        status: 91,
+        status: 69,
         marketCap: '$168k',
         links: {
           pump: "https://pump.fun/token/xyz",
@@ -350,7 +350,7 @@ function Memescope() {
         token: 'NEBLxT8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263',
         image: 'https://pbs.twimg.com/profile_images/1816253358266585088/lV53aGig_400x400.jpg',
         time: '5h',
-        status: 86,
+        status: 67,
         marketCap: '$92k',
         links: {
           pump: "https://pump.fun/token/xyz",
@@ -528,7 +528,7 @@ function Memescope() {
           token: `Token${index + exampleCoins.length + 1}`,
           image: 'https://via.placeholder.com/50',
           time: '10m',
-          status: prefix.includes('New') ? 20 : prefix.includes('Completing') ? 85 : 100,
+          status: prefix.includes('New') ? 20 : prefix.includes('Completing') ? 75 : 100,
           marketCap: '$10k',
           links: {
             pump: "https://pump.fun/token/xyz",

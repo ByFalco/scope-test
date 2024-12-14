@@ -4,7 +4,7 @@ import AutoSizer from 'react-virtualized-auto-sizer';
 import './VirtualizedList.css';
 
 const CoinRow = memo(({ data, index, style }) => {
-  const { items, props } = data;
+  const { items, props, listTitle } = data;
   const coin = items[index];
   const {
     abbreviateToken,
@@ -93,6 +93,9 @@ const CoinRow = memo(({ data, index, style }) => {
           <div className="name-container">
             <h3>{coin.name}</h3>
             <span className="second-name">{coin.secondName}</span>
+            {listTitle === "Completing" && coin.status === 100 && (
+              <span className="migrating-badge">Migrating...</span>
+            )}
           </div>
           <div className="token-container">
             <span className="time">{coin.time}</span>
@@ -130,7 +133,7 @@ const CoinRow = memo(({ data, index, style }) => {
               </div>
             </div>
             <div className="market-cap" data-tooltip="Market Cap">
-              <span className="mc-label">MC:</span>
+              <span className="mc-label">MC</span>
               <span className="mc-value">{coin.marketCap}</span>
             </div>
           </div>
@@ -168,6 +171,7 @@ const VirtualizedList = ({
               itemData={{
                 items,
                 props: listProps,
+                listTitle: title
               }}
             >
               {CoinRow}
