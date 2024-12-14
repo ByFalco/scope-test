@@ -653,9 +653,6 @@ function Memescope() {
 
   return (
     <div className="memescope">
-      <h1>Memescope</h1>
-      <p>Discover top pump.fun and Moonshot tokens and track the latest migrations with real-time customized feeds.</p>
-      <div className="divider"></div>
       <div className="lists-container">
         {renderLists()}
       </div>
