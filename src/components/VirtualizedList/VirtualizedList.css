@@ -160,7 +160,7 @@
   
   .progress-circle-fg {
     fill: none;
-    stroke-width: 3;
+    stroke-width: 2;
     stroke-linecap: round;
     transition: stroke-dashoffset 0.5s ease, stroke 0.5s ease;
   }
