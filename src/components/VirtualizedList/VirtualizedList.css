@@ -120,7 +120,7 @@
   }
 
   .virtual-scroll [data-index="odd"]:not(:first-child) .coin-card {
-    padding-bottom: 10px;
+    padding-bottom: 6px;
     margin-top: 4px;
   }
 
