@@ -45,7 +45,10 @@ const CoinRow = memo(({ data, index, style }) => {
   const gradient = getStatusGradient(coin.status);
 
   return (
-    <div style={style}>
+    <div 
+      style={style} 
+      data-index={index % 2 === 1 ? 'odd' : 'even'}
+    >
       <div className="coin-card">
         <div className="coin-logo-wrapper">
           <svg className="progress-circle" viewBox="0 0 80 80">
@@ -173,6 +176,8 @@ const VirtualizedList = ({
                 props: listProps,
                 listTitle: title
               }}
+              overscanCount={5}
+              useIsScrolling={true}
             >
               {CoinRow}
             </List>

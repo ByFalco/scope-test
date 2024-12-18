@@ -126,7 +126,7 @@ nav::after {
   padding: 11px 20px;
   padding-left: 45px;
   padding-right: 45px;
-  background-color: #171A1C;
+  background-color: #0B0E12;
   box-shadow: 0 4px 6px rgba(17, 17, 17, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 6px;
@@ -140,7 +140,6 @@ nav::after {
 
 .search-bar:focus {
   outline: none;
-  background-color: rgba(23, 26, 28, 1);
   border: 1px solid transparent;
 }
 
@@ -273,9 +272,8 @@ nav a:hover {
 
 /* Icona del wallet */
 .connect-button .wallet-icon {
-  width: 21px;
-  height: 21px;
-  line-height: 0;
+  width: 22px;
+  height: 22px;
   transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
@@ -299,7 +297,7 @@ nav a:hover {
 }
 
 .connect-button:hover .wallet-icon {
-  transform: rotate(12deg) scale(1.08);
+  transform: rotate(12deg) scale(1.1);
 }
 
 /* Effetto click */
@@ -328,7 +326,6 @@ nav a:hover {
 }
 
 .connect-button:hover span {
-  transform: scale(1.03);
   transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 /* Testo del pulsante */
@@ -496,7 +493,7 @@ nav a:hover {
   right: 50px;
   width: 0;
   padding: 8px 12px;
-  background-color: #171A1C;
+  background-color: #0B0E12;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 6px;
   color: #f0f0f0;
@@ -508,7 +505,7 @@ nav a:hover {
 .mobile-search-input:focus {
   outline: none;
   border: double 1px transparent;
-  background-image: linear-gradient(rgba(23, 26, 28, 1), rgba(23, 26, 28, 1)), 
+  background-image: linear-gradient(rgba(11, 14, 18, 1), rgba(11, 14, 18, 1)), 
     linear-gradient(137deg,
       #FFF6FB 0%,
       #EEA7ED 15%,
@@ -604,7 +601,6 @@ nav a:hover {
 
   .mobile-search-input:focus {
     outline: none;
-    background-color: rgba(255, 255, 255, 0.02);
     border-color: transparent;
   }
 
