@@ -153,13 +153,17 @@ const VirtualizedList = ({
   listProps,
   className = ''
 }) => {
+  const getItemSize = () => {
+    return window.innerWidth <= 768 ? 90 : 100;
+  };
+
   return (
     <div className={`list ${className}`}>
       <h2>
         {title}
         <button className="filter-button" onClick={onFilterClick}>
           <img src={listProps.filterIcon} alt="Filter" className="filter-icon" />
-          Filter
+          <span>Filter</span>
         </button>
       </h2>
       <div className="coins-container">
@@ -169,14 +173,14 @@ const VirtualizedList = ({
               className="virtual-scroll"
               height={height}
               itemCount={items.length}
-              itemSize={100}
+              itemSize={getItemSize()}
               width={width}
               itemData={{
                 items,
                 props: listProps,
                 listTitle: title
               }}
-              overscanCount={5}
+              overscanCount={2}
               useIsScrolling={true}
             >
               {CoinRow}
